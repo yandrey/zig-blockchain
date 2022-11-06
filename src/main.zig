@@ -17,7 +17,7 @@ const Command = union(enum) {
             Command.quit => std.process.exit(0),
 
             Command.new => |data| {
-                try writer.print("{s}", .{blockchain.new_block(data)});
+                try writer.print("{s}", .{try blockchain.new_block(data)});
             },
 
             Command.list => {
